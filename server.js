@@ -90,6 +90,7 @@ app.delete('/books/:id', async (req, res) => {
 
 // Start server
 const port = 3000;
+const baseLocalHost = 'http://localhost'
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on ${baseLocalHost}:${port}`);
 });
