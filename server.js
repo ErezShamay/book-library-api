@@ -3,6 +3,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
+const baseUrl = 'mongodb://localhost/book-library';
+
 // Initialize Express app
 const app = express();
 
@@ -10,7 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/book-library', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(baseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.error('Could not connect to MongoDB:', err));
 
