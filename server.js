@@ -1,6 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import { bookSchema } from './book-schema';
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 // Initialize Express app
 const app = express();
@@ -13,18 +14,8 @@ mongoose.connect('mongodb://localhost/book-library', { useNewUrlParser: true, us
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.error('Could not connect to MongoDB:', err));
 
-// Book schema
-const bookSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    author: { type: String, required: true },
-    year: { type: Number, required: true },
-    genre: String,
-});
-
 // Book model
 const Book = mongoose.model('Book', bookSchema);
-
-// CRUD Routes
 
 // CREATE - Add a new book
 app.post('/books', async (req, res) => {
